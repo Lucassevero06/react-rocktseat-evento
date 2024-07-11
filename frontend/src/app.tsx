@@ -26,6 +26,12 @@ export function App() {
     setIsGuestsModalOpen(false)
   }
 
+  function removeEmailFromInvite(emailToRemove: string) {
+    const newEmailList = (emailsToInvite.filter((email) => email !== emailToRemove));
+
+    setEmailsToInvite(newEmailList);
+  }
+
   function addNewEmailToInvite(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -160,7 +166,7 @@ export function App() {
                       <span className="text-zinc-300">
                         {email}
                       </span>
-                      <button type="button">
+                      <button type="button" onClick={() => removeEmailFromInvite(email)}>
                         <X className="size-4 text-zinc-400" />
                       </button>
                     </div>
